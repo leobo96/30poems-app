@@ -1,0 +1,73 @@
+:root {
+  --primary-color: #6ab04c;
+  --primary-color-hover: #b8e994;
+}
+
+body {
+  padding-top: 56px;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--primary-color-hover);
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-hover);
+  border-color: var(--primary-color-hover);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  border-color: var(--primary-color-hover);
+  background-color: var(--primary-color-hover);
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.text-primary,
+.nav-link.active {
+  color: var(--primary-color) !important;
+}
+
+.nav-link:hover {
+  color: var(--primary-color-hover) !important;
+}
+
+.logo {
+  max-width: 12rem;
+}

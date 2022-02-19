@@ -1,0 +1,10 @@
+.image {
+  height: 70%;
+  object-fit: cover;
+}
+
+.overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
