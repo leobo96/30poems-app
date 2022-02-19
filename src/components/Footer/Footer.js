@@ -21,7 +21,7 @@ function Footer(props) {
   });
 
   return (
-    <footer className="pt-4 bg-dark text-light">
+    <footer className="py-4 bg-dark text-light">
       <div className="container-fluid d-flex flex-column align-items-center">
         <NavLink to="/">
           <img src={logo} className="mb-3" alt="logo" loading="lazy" />
@@ -32,7 +32,26 @@ function Footer(props) {
           </ul>
         </nav>
         <hr className="w-75" />
-        <p>&copy;Leonardo Bonaventura</p>
+        <div className="row w-75">
+          <div className="col-sm text-center text-sm-start">
+            {" "}
+            <span style={{ fontSize: "12px" }}>&copy;Leonardo Bonaventura</span>
+          </div>
+          <div className="col-sm text-center text-sm-end">
+            <a
+              href="https://github.com/leobo96"
+              target={"_blank"}
+              rel="noreferrer"
+            ><i className="bi-github text-primary p-3" style={{fontSize: "1rem"}}></i></a>
+            
+            <a
+              href="https://www.linkedin.com/in/leonardobonaventura/"
+              target={"_blank"}
+              rel="noreferrer"
+            ><i className="bi-linkedin text-primary p-3" style={{fontSize: "1rem"}}></i></a>
+            
+          </div>
+        </div>
       </div>
     </footer>
   );

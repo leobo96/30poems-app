@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import DetailPage from "./views/DetailPage/DetailPage";
 import Catalogo from "./views/Catalogo/Catalogo";
 import Home from "./views/Home/Home";
 import Documentazione from "./views/Documentazione/Documentazione";
+
 import MainTemplate from "./components/MainTemplate/MainTemplate";
-import { AccessImageUrl, getWikiPageId } from "./utility/utility";
+
 import {
+  AccessImageUrl,
+  getWikiPageId,
   getImageFromWikipediaAPI,
   prepareNameForWikipediaQuery,
 } from "./utility/utility";
+
 import defaultAthorImage from "./assets/images/missing.jpg";
 import Logo from "./assets/images/logo.png";
-import LogoDark from "./assets/images/logo-dark.png";
 
 function App() {
   const [poetryData, setPoetryData] = useState([]);
@@ -51,20 +55,22 @@ function App() {
               .then((r) => {
                 imageUrl = AccessImageUrl(r);
                 pageId = getWikiPageId(r);
-              });
+              })
+              .catch((error) => console.log("Error: " + error));
           }
 
           newPoetryData[index].imageUrl = imageUrl || defaultAthorImage;
           newPoetryData[index].wikiPageId = pageId;
 
           setPoetryDataFinal([...newPoetryData]);
-        });
+        })
+        .catch((error) => console.log("Error: " + error));
     });
   }, [poetryData]);
 
   return (
     <BrowserRouter>
-      <MainTemplate navItems={nav} logo={Logo} logoDark={LogoDark}>
+      <MainTemplate navItems={nav} logo={Logo}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/poems" element={<Catalogo data={poetryDataFinal} />} />

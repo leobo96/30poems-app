@@ -35,7 +35,9 @@ a:hover {
   font-variant: small-caps;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
 }
@@ -66,6 +68,10 @@ a:hover {
 
 .nav-link:hover {
   color: var(--primary-color-hover) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
 }
 
 .logo {
