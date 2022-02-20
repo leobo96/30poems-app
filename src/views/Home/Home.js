@@ -9,7 +9,7 @@ function Home(props) {
         className={`${style.hero} d-flex justify-content-center align-items-center text-light`}
       >
         <div className="container p-5 d-flex flex-column align-items-center">
-          <h1 class="text-center mb-5">
+          <h1 className="text-center mb-5">
             30Poems è un'app che regala trenta poesie estratte casualmente dal
             database di poetryDb.
           </h1>
