@@ -69,7 +69,7 @@ function App() {
   }, [poetryData]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="30poems-app">
       <MainTemplate navItems={nav} logo={Logo}>
         <Routes>
           <Route path="/" element={<Home />} />
