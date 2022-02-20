@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/30poems-app/static/css/main.ca47c06f.chunk.css",
-    "main.js": "/30poems-app/static/js/main.1a3aeee7.chunk.js",
-    "main.js.map": "/30poems-app/static/js/main.1a3aeee7.chunk.js.map",
+    "main.js": "/30poems-app/static/js/main.c0533d98.chunk.js",
+    "main.js.map": "/30poems-app/static/js/main.c0533d98.chunk.js.map",
     "runtime-main.js": "/30poems-app/static/js/runtime-main.e9e88cbe.js",
     "runtime-main.js.map": "/30poems-app/static/js/runtime-main.e9e88cbe.js.map",
     "static/css/2.0a9ec390.chunk.css": "/30poems-app/static/css/2.0a9ec390.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.0a9ec390.chunk.css",
     "static/js/2.7ddbf229.chunk.js",
     "static/css/main.ca47c06f.chunk.css",
-    "static/js/main.1a3aeee7.chunk.js"
+    "static/js/main.c0533d98.chunk.js"
   ]
 }
