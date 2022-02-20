@@ -14,12 +14,12 @@ function Home(props) {
             database di poetryDb.
           </h1>
           <div className="row g-3">
-            <div className="col">
+            <div className="col text-center">
               <Link to="/poems/0" className="btn btn-primary text-nowrap">
                 Leggi una poesia
               </Link>
             </div>
-            <div className="col">
+            <div className="col text-center">
               <Link to="/poems" className="btn btn-outline-primary text-nowrap">
                 Esplora il catalogo
               </Link>
