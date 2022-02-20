@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/30poems/static/css/main.b68de576.chunk.css",
+    "main.js": "/30poems/static/js/main.1a3aeee7.chunk.js",
+    "main.js.map": "/30poems/static/js/main.1a3aeee7.chunk.js.map",
+    "runtime-main.js": "/30poems/static/js/runtime-main.2723e349.js",
+    "runtime-main.js.map": "/30poems/static/js/runtime-main.2723e349.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/30poems/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.7ddbf229.chunk.js": "/30poems/static/js/2.7ddbf229.chunk.js",
+    "static/js/2.7ddbf229.chunk.js.map": "/30poems/static/js/2.7ddbf229.chunk.js.map",
+    "static/js/3.adfef084.chunk.js": "/30poems/static/js/3.adfef084.chunk.js",
+    "static/js/3.adfef084.chunk.js.map": "/30poems/static/js/3.adfef084.chunk.js.map",
+    "index.html": "/30poems/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/30poems/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.b68de576.chunk.css.map": "/30poems/static/css/main.b68de576.chunk.css.map",
+    "static/js/2.7ddbf229.chunk.js.LICENSE.txt": "/30poems/static/js/2.7ddbf229.chunk.js.LICENSE.txt",
+    "static/media/folder-structure.113980ba.png": "/30poems/static/media/folder-structure.113980ba.png",
+    "static/media/Home.module.css": "/30poems/static/media/hero-1.d1e09bdf.jpg",
+    "static/media/Documentazione.module.css": "/30poems/static/media/hero2.e664e6ad.jpg",
+    "static/media/missing.9265c3e6.jpg": "/30poems/static/media/missing.9265c3e6.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2723e349.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.7ddbf229.chunk.js",
+    "static/css/main.b68de576.chunk.css",
+    "static/js/main.1a3aeee7.chunk.js"
+  ]
+}
