@@ -6,4 +6,5 @@ export interface Poem {
   id?: string;
   pageId?: number;
   imageUrl?: string;
+  wikiPageId?: string;
 }

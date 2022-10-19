@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Spinner } from "reactstrap";
 import AuthorCard from "../../components/AuthorCard/AuthorCard";
+import { useStore } from "../../context/store";
+import { Poem } from "../../models";
 
-const ShowAllButton = (props) => {
-  const { collapsed, setCollapsed } = props;
-
+interface ShowAllButtonProps {
+  collapsed: boolean;
+  setCollapsed: (a: boolean) => void;
+}
+const ShowAllButton = ({ collapsed, setCollapsed }: ShowAllButtonProps) => {
   return (
     <button
       className="btn btn-link text-primary ps-0"
@@ -18,9 +22,18 @@ const ShowAllButton = (props) => {
   );
 };
 
-const PoemContent = (props) => {
-  const { poem, collapsed, setCollapsed, id } = props;
-
+interface PoemContentProps {
+  poem: Poem;
+  collapsed: boolean;
+  setCollapsed: (a: boolean) => void;
+  id: number;
+}
+const PoemContent = ({
+  poem,
+  collapsed,
+  setCollapsed,
+  id,
+}: PoemContentProps) => {
   const lines = poem.lines.map((line, index) => <p key={index}>{line}</p>);
   const firstFiveLines = lines.filter((_, index) => index < 5);
 
@@ -51,13 +64,18 @@ const PoemContent = (props) => {
   );
 };
 
-function DetailPage(props) {
-  const { data } = props;
+function DetailPage() {
+  const { poetryData: data } = useStore();
 
   const [collapsed, setCollapsed] = useState(true);
 
-  const params = useParams();
-  const id = parseInt(params.number);
+  const { number } = useParams();
+
+  if (!number) {
+    return <p>Error</p>;
+  }
+
+  const id = parseInt(number);
 
   return (
     <div className="container p-3">
