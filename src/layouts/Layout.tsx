@@ -1,8 +1,7 @@
 import React, { ReactNode } from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
-import logo from "../../assets/images/logo.png";
-
+import logo from "../assets/images/logo.png";
 interface LayoutProps {
   children: ReactNode;
 }
