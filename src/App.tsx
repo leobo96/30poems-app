@@ -18,7 +18,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/poems" element={<Catalogo data={poetryData} />} />
+          <Route path="/poems" element={<Catalogo />} />
           <Route path="/documentazione" element={<Documentazione />} />
           <Route
             path="/poems/:number"

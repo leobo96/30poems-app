@@ -3,10 +3,14 @@ import style from "./Catalogo.module.css";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../components/PoemsTable/PoemsTable";
 import { Badge, Row, Col, Container, Collapse } from "reactstrap";
+import { useStore } from "../../context/store";
+import { Poem } from "../../models";
 
-const Switch = (props) => {
-  const { displayGrid, setDisplayGrid } = props;
-
+interface SwitchProps {
+  displayGrid: boolean;
+  setDisplayGrid: (a: boolean) => void;
+}
+const Switch = ({ displayGrid, setDisplayGrid }: SwitchProps) => {
   return (
     <div className={style.switch}>
       <div
@@ -25,10 +29,16 @@ const Switch = (props) => {
     </div>
   );
 };
-
-const FilterPill = (props) => {
-  const { author, activeFilters, setActiveFilters } = props;
-
+interface FilterPillProps {
+  author: string;
+  activeFilters: string[];
+  setActiveFilters: (a: string[]) => void;
+}
+const FilterPill = ({
+  author,
+  activeFilters,
+  setActiveFilters,
+}: FilterPillProps) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -50,14 +60,17 @@ const FilterPill = (props) => {
   );
 };
 
-const Filter = (props) => {
-  const { data, activeFilters, setActiveFilters } = props;
-
+interface FilterProps {
+  data: Poem[];
+  activeFilters: string[];
+  setActiveFilters: (a: string[]) => void;
+}
+const Filter = ({ data, activeFilters, setActiveFilters }: FilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const authors = [...new Set(data.map((poem) => poem.author))];
+  const authors = Array.from(new Set(data.map((poem) => poem.author))).sort();
 
-  const pills = authors.sort().map((author, index) => {
+  const pills = authors.map((author, index) => {
     return (
       <FilterPill
         key={index}
@@ -81,13 +94,13 @@ const Filter = (props) => {
   );
 };
 
-function Catalogo(props) {
-  const { data } = props;
+function Catalogo() {
+  const { poetryData: data } = useStore();
 
   const [displayGrid, setDisplayGrid] = useState(true);
-  const [activeFilters, setActiveFilters] = useState([]);
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
-  const [dataToShow, setDataToShow] = useState();
+  const [dataToShow, setDataToShow] = useState<Poem[]>([]);
 
   useEffect(() => {
     setDataToShow(
