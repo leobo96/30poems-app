@@ -1,3 +1,4 @@
+import { getPoems } from "./api/getPoems";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -23,12 +24,9 @@ function App() {
   const [poetryDataFinal, setPoetryDataFinal] = useState([]);
 
   useEffect(() => {
-    fetch("https://poetrydb.org/random/30")
-      .then((r) => r.json())
-      .then((r) => {
-        setPoetryData(r.map((poem, index) => ({ ...poem, id: index })));
-      })
-      .catch((error) => console.log("Error: " + error));
+    getPoems().then((data) => {
+      setPoetryData(data);
+    });
   }, []);
 
   useEffect(() => {
