@@ -6,7 +6,7 @@ import Catalogo from "./views/Catalogo/Catalogo";
 import Home from "./views/Home/Home";
 import Documentazione from "./views/Documentazione/Documentazione";
 
-import MainTemplate from "./layouts/MainTemplate/MainTemplate";
+import Layout from "./layouts/Layout";
 
 import {
   AccessImageUrl,
@@ -21,12 +21,6 @@ import Logo from "./assets/images/logo.png";
 function App() {
   const [poetryData, setPoetryData] = useState([]);
   const [poetryDataFinal, setPoetryDataFinal] = useState([]);
-
-  const nav = [
-    { url: "/", text: "Home" },
-    { url: "/documentazione", text: "Documentazione" },
-    { url: "/poems", text: "Catalogo" },
-  ];
 
   useEffect(() => {
     fetch("https://poetrydb.org/random/30")
@@ -70,7 +64,7 @@ function App() {
 
   return (
     <BrowserRouter basename="30poems-app">
-      <MainTemplate navItems={nav} logo={Logo}>
+      <Layout logo={Logo}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/poems" element={<Catalogo data={poetryDataFinal} />} />
@@ -80,7 +74,7 @@ function App() {
             element={<DetailPage data={poetryDataFinal} />}
           />
         </Routes>
-      </MainTemplate>
+      </Layout>
     </BrowserRouter>
   );
 }
