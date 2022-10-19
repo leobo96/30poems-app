@@ -6,7 +6,7 @@ import Catalogo from "./views/Catalogo/Catalogo";
 import Home from "./views/Home/Home";
 import Documentazione from "./views/Documentazione/Documentazione";
 
-import MainTemplate from "./components/MainTemplate/MainTemplate";
+import MainTemplate from "./layouts/MainTemplate/MainTemplate";
 
 import {
   AccessImageUrl,
