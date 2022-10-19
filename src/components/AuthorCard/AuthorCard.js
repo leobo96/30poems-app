@@ -26,7 +26,7 @@ const AuthorCard = (props) => {
           setWikidataId(entity && entity["wikibase_item"]);
         }
       });
-  }, [id]);
+  }, [id, name]);
 
   return (
     <Card className={`h-100 ${style.card}`}>

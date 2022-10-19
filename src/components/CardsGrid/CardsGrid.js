@@ -6,7 +6,7 @@ function CardsGrid(props) {
 
   const cardCols = data.map((poem, index) => {
     return (
-      <div className="col" key={index} className="pb-3">
+      <div className="col pb-3" key={index}>
         <PoemCard
           id={poem?.id}
           title={poem.title}

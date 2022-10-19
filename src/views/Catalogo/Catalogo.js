@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import style from "./Catalogo.module.css";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../components/PoemsTable/PoemsTable";
-import { Badge, Row, Col, Container, Collapse, Button } from "reactstrap";
+import { Badge, Row, Col, Container, Collapse } from "reactstrap";
 
 const Switch = (props) => {
   const { displayGrid, setDisplayGrid } = props;

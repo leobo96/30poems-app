@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Spinner } from "reactstrap";
 import AuthorCard from "../../components/AuthorCard/AuthorCard";
