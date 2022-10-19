@@ -1,5 +1,4 @@
-import { getPoems } from "./api/getPoems";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import DetailPage from "./views/DetailPage/DetailPage";
@@ -9,17 +8,10 @@ import Documentazione from "./views/Documentazione/Documentazione";
 
 import Layout from "./layouts/Layout";
 
-import { enrichAuthorsData } from "./utility/enrichAuthorsData";
-import { Poem } from "./models";
+import { useStore } from "./context/store";
 
 function App() {
-  const [poetryData, setPoetryData] = useState<Poem[]>([]);
-
-  useEffect(() => {
-    getPoems()
-      .then((data) => enrichAuthorsData(data))
-      .then((data) => setPoetryData(data));
-  }, []);
+  const { poetryData } = useStore();
 
   return (
     <BrowserRouter basename="30poems-app">
