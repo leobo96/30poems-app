@@ -74,25 +74,28 @@ function DetailPage() {
   const [collapsed, setCollapsed] = useState(true);
 
   const { number } = useParams();
+  const id = number && parseInt(number);
 
-  if (!number) {
+  if (!id) {
     return <p>Error</p>;
   }
 
-  const id = parseInt(number);
+  if (data?.length === 0) {
+    return <LoadingScreen />;
+  }
+
+  if (data.length > 0 && !data[id]) {
+    return <p>Error</p>;
+  }
 
   return (
     <Container className="p-3">
-      {data[id] ? (
-        <PoemContent
-          id={id}
-          poem={data[id]}
-          collapsed={collapsed}
-          setCollapsed={setCollapsed}
-        />
-      ) : (
-        <LoadingScreen />
-      )}
+      <PoemContent
+        id={id}
+        poem={data[id]}
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+      />
 
       <div className="text-center mt-3">
         <Link
