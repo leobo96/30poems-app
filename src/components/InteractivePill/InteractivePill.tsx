@@ -2,12 +2,12 @@ import React from "react";
 import { Badge } from "reactstrap";
 
 export interface InteractivePillProps {
-  author: string;
+  text: string;
   isActive: boolean;
   onClick: () => void;
 }
 export const InteractivePill = ({
-  author,
+  text,
   isActive,
   onClick,
 }: InteractivePillProps) => {
@@ -20,7 +20,7 @@ export const InteractivePill = ({
       }}
       onClick={onClick}
     >
-      {author}
+      {text}
     </Badge>
   );
 };

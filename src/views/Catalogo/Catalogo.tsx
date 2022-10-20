@@ -17,11 +17,11 @@ const Filter = ({ data, activeFilters, onChange }: FilterProps) => {
 
   const authors = Array.from(new Set(data.map((poem) => poem.author))).sort();
 
-  const pills = authors.map((author, index) => {
+  const pills = authors.map((author) => {
     return (
       <InteractivePill
-        key={index}
-        author={author}
+        key={author}
+        text={author}
         isActive={activeFilters.includes(author)}
         onClick={() => onChange(author)}
       />
