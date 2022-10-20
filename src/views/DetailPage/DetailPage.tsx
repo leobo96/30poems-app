@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Col, Row, Spinner } from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 import AuthorCard from "../../components/AuthorCard/AuthorCard";
+import { LoadingScreen } from "../../components/LoadingScreen/LoadingScreen";
 import { useStore } from "../../context/store";
 import { Poem } from "../../models";
 
@@ -81,7 +82,7 @@ function DetailPage() {
   const id = parseInt(number);
 
   return (
-    <div className="container p-3">
+    <Container className="p-3">
       {data[id] ? (
         <PoemContent
           id={id}
@@ -90,9 +91,7 @@ function DetailPage() {
           setCollapsed={setCollapsed}
         />
       ) : (
-        <div className="text-center my-5">
-          <Spinner className="">Caricamento...</Spinner>
-        </div>
+        <LoadingScreen />
       )}
 
       <div className="text-center mt-3">
@@ -104,7 +103,7 @@ function DetailPage() {
           Cambia
         </Link>
       </div>
-    </div>
+    </Container>
   );
 }
 
