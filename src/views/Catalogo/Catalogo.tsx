@@ -1,40 +1,11 @@
+import { Switch } from "./../../components/Switch/Switch";
 import { InteractivePill } from "./../../components/InteractivePill/InteractivePill";
 import React, { useState, useEffect } from "react";
-import style from "./Catalogo.module.css";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../components/PoemsTable/PoemsTable";
 import { Row, Col, Container, Collapse } from "reactstrap";
 import { useStore } from "../../context/store";
 import { Poem } from "../../models";
-
-interface SwitchProps {
-  isSwitched: boolean;
-  onChange: () => void;
-  options: [string, string];
-}
-const Switch = ({ isSwitched, onChange, options }: SwitchProps) => {
-  return (
-    <div className={style.switch}>
-      <div
-        className={`${style.option} ${isSwitched ? style.active : null}`}
-        onClick={() => {
-          onChange();
-        }}
-      >
-        {options[0]}
-      </div>
-
-      <div
-        className={`${style.option} ${!isSwitched ? style.active : null}`}
-        onClick={() => {
-          onChange();
-        }}
-      >
-        {options[1]}
-      </div>
-    </div>
-  );
-};
 
 interface FilterProps {
   data: Poem[];
@@ -86,10 +57,6 @@ function Catalogo() {
     );
   };
 
-  const switchChangeHandler = () => {
-    setDisplayGrid(!displayGrid);
-  };
-
   useEffect(() => {
     setDataToShow(
       activeFilters.length !== 0
@@ -104,7 +71,7 @@ function Catalogo() {
         <Col>
           <Switch
             isSwitched={displayGrid}
-            onChange={switchChangeHandler}
+            onChange={() => setDisplayGrid(!displayGrid)}
             options={["Grid", "Table"]}
           />
         </Col>
