@@ -1,6 +1,6 @@
 import { Switch } from "./../../components/Switch/Switch";
 import { InteractivePill } from "./../../components/InteractivePill/InteractivePill";
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../components/PoemsTable/PoemsTable";
 import { Row, Col, Container, Collapse } from "reactstrap";
@@ -47,8 +47,6 @@ function Catalogo() {
   const [displayGrid, setDisplayGrid] = useState(true);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
-  const [dataToShow, setDataToShow] = useState<Poem[]>([]);
-
   const filterChangeHandler = (author: string) => {
     setActiveFilters((prevFilter) =>
       prevFilter.includes(author)
@@ -57,13 +55,11 @@ function Catalogo() {
     );
   };
 
-  useEffect(() => {
-    setDataToShow(
-      activeFilters.length !== 0
-        ? data.filter((poem) => activeFilters.includes(poem.author))
-        : data
-    );
-  }, [data, activeFilters]);
+  const dataToShow = useMemo(() => {
+    return activeFilters.length !== 0
+      ? data.filter((poem) => activeFilters.includes(poem.author))
+      : data;
+  }, [activeFilters]);
 
   return (
     <Container>
@@ -91,11 +87,11 @@ function Catalogo() {
         <Col>
           {displayGrid ? (
             <CardsGrid
-              data={dataToShow ? dataToShow : data}
+              data={dataToShow}
               col={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
             />
           ) : (
-            <PoemsTable data={dataToShow ? dataToShow : data} />
+            <PoemsTable data={dataToShow} />
           )}
         </Col>
       </Row>
