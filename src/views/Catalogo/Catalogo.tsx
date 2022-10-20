@@ -1,8 +1,9 @@
+import { InteractivePill } from "./../../components/InteractivePill/InteractivePill";
 import React, { useState, useEffect } from "react";
 import style from "./Catalogo.module.css";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../components/PoemsTable/PoemsTable";
-import { Badge, Row, Col, Container, Collapse } from "reactstrap";
+import { Row, Col, Container, Collapse } from "reactstrap";
 import { useStore } from "../../context/store";
 import { Poem } from "../../models";
 
@@ -27,27 +28,6 @@ const Switch = ({ displayGrid, setDisplayGrid }: SwitchProps) => {
         Table
       </div>
     </div>
-  );
-};
-interface InteractivePillProps {
-  author: string;
-  isActive: boolean;
-  onClick: () => void;
-}
-const InteractivePill = ({
-  author,
-  isActive,
-  onClick,
-}: InteractivePillProps) => {
-  return (
-    <Badge
-      pill
-      className={`me-1 mb-1 ${isActive ? "bg-primary" : ""}`}
-      style={{ cursor: "pointer" }}
-      onClick={onClick}
-    >
-      {author}
-    </Badge>
   );
 };
 
