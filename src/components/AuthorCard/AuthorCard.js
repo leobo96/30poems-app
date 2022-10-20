@@ -1,32 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from "reactstrap";
-import {
-  getWikiPageId,
-  prepareNameForWikipediaQuery,
-  getWikidataIdAPI,
-} from "../../utility/utility";
+import { useEffect, useState } from "react";
+import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from "reactstrap";
+import { getWikiDataApi } from "../../api/author/getWikiDataApi";
 import style from "./AuthorCard.module.css";
 
 const AuthorCard = (props) => {
-  const { image, name, authorWikiPageId, id } = props;
+  const { image, name, authorWikiPageId } = props;
 
   const [authorDescription, setAuthorDescription] = useState();
   const [wikidataId, setWikidataId] = useState();
 
   useEffect(() => {
-    let authorNameAdjusted = prepareNameForWikipediaQuery(name);
-
-    fetch(getWikidataIdAPI + authorNameAdjusted)
-      .then((r) => r.json())
-      .then((r) => {
-        let entity = r.query.pages[getWikiPageId(r)].pageprops;
-        if (entity?.disambiguation !== "") {
-          console.log("entity " + JSON.stringify(entity));
-          setAuthorDescription(entity && entity["wikibase-shortdesc"]);
-          setWikidataId(entity && entity["wikibase_item"]);
-        }
-      });
-  }, [id, name]);
+    getWikiDataApi(name).then((data) => {
+      setAuthorDescription(data.authorDescription);
+      setWikidataId(data.wikidataId);
+    });
+  }, [name]);
 
   return (
     <Card className={`h-100 ${style.card}`}>
