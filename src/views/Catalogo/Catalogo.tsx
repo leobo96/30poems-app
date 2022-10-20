@@ -8,24 +8,29 @@ import { useStore } from "../../context/store";
 import { Poem } from "../../models";
 
 interface SwitchProps {
-  displayGrid: boolean;
-  setDisplayGrid: (a: boolean) => void;
+  isSwitched: boolean;
+  onChange: () => void;
+  options: [string, string];
 }
-const Switch = ({ displayGrid, setDisplayGrid }: SwitchProps) => {
+const Switch = ({ isSwitched, onChange, options }: SwitchProps) => {
   return (
     <div className={style.switch}>
       <div
-        className={`${style.option} ${displayGrid ? style.active : null}`}
-        onClick={() => setDisplayGrid(true)}
+        className={`${style.option} ${isSwitched ? style.active : null}`}
+        onClick={() => {
+          onChange();
+        }}
       >
-        Grid
+        {options[0]}
       </div>
 
       <div
-        className={`${style.option} ${!displayGrid ? style.active : null}`}
-        onClick={() => setDisplayGrid(false)}
+        className={`${style.option} ${!isSwitched ? style.active : null}`}
+        onClick={() => {
+          onChange();
+        }}
       >
-        Table
+        {options[1]}
       </div>
     </div>
   );
@@ -81,6 +86,10 @@ function Catalogo() {
     );
   };
 
+  const switchChangeHandler = () => {
+    setDisplayGrid(!displayGrid);
+  };
+
   useEffect(() => {
     setDataToShow(
       activeFilters.length !== 0
@@ -93,7 +102,11 @@ function Catalogo() {
     <Container>
       <Row className="justify-content-center">
         <Col>
-          <Switch displayGrid={displayGrid} setDisplayGrid={setDisplayGrid} />
+          <Switch
+            isSwitched={displayGrid}
+            onChange={switchChangeHandler}
+            options={["Grid", "Table"]}
+          />
         </Col>
       </Row>
 
