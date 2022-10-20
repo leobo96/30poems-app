@@ -1,10 +1,13 @@
+export interface Author {
+  name: string;
+  imageUrl: string;
+  wikipediaPageId?: number;
+}
+
 export interface Poem {
   title: string;
-  author: string;
+  author: Author;
   lines: string[];
   linecount: number;
   id?: string;
-  pageId?: number;
-  imageUrl?: string;
-  wikiPageId?: string;
 }

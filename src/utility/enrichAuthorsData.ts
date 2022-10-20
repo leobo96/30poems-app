@@ -1,10 +1,10 @@
-import { Poem } from "../models";
 import { getImageAndPageIdApi } from "../api/author/getImageAndPageIdApi";
 import defaultAthorImage from "../assets/images/missing.jpg";
+import { Poem } from "../models";
 
 export const enrichAuthorsData = async (data: Poem[]): Promise<Poem[]> => {
   const promisesList = data.map(({ author }) => {
-    return getImageAndPageIdApi(author);
+    return getImageAndPageIdApi(author.name);
   });
 
   const results = await Promise.allSettled(promisesList);
@@ -13,8 +13,11 @@ export const enrichAuthorsData = async (data: Poem[]): Promise<Poem[]> => {
     if (result.status === "fulfilled") {
       return {
         ...data[index],
-        pageId: result.value.pageId,
-        imageUrl: result.value.imageUrl ?? defaultAthorImage,
+        author: {
+          ...data[index].author,
+          wikipediaPageId: result.value.pageId,
+          imageUrl: result.value.imageUrl ?? defaultAthorImage,
+        },
       };
     }
     return {

@@ -1,11 +1,11 @@
-import { Switch } from "./../../components/Switch/Switch";
-import { InteractivePill } from "./../../components/InteractivePill/InteractivePill";
-import React, { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
+import { Col, Collapse, Container, Row } from "reactstrap";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../components/PoemsTable/PoemsTable";
-import { Row, Col, Container, Collapse } from "reactstrap";
 import { useStore } from "../../context/store";
 import { Poem } from "../../models";
+import { InteractivePill } from "./../../components/InteractivePill/InteractivePill";
+import { Switch } from "./../../components/Switch/Switch";
 
 interface FilterProps {
   data: Poem[];
@@ -20,10 +20,10 @@ const Filter = ({ data, activeFilters, onChange }: FilterProps) => {
   const pills = authors.map((author) => {
     return (
       <InteractivePill
-        key={author}
-        text={author}
-        isActive={activeFilters.includes(author)}
-        onClick={() => onChange(author)}
+        key={author.name}
+        text={author.name}
+        isActive={activeFilters.includes(author.name)}
+        onClick={() => onChange(author.name)}
       />
     );
   });
@@ -57,7 +57,7 @@ function Catalogo() {
 
   const dataToShow = useMemo(() => {
     return activeFilters.length !== 0
-      ? data.filter((poem) => activeFilters.includes(poem.author))
+      ? data.filter((poem) => activeFilters.includes(poem.author.name))
       : data;
   }, [activeFilters, data]);
 
