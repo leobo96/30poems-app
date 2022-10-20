@@ -9,23 +9,14 @@ interface SwitchProps {
 const Switch = ({ isSwitched, onChange, options }: SwitchProps) => {
   return (
     <div className={style.switch}>
-      <div
-        className={`${style.option} ${isSwitched ? style.active : null}`}
-        onClick={() => {
-          onChange();
-        }}
-      >
-        {options[0]}
-      </div>
-
-      <div
-        className={`${style.option} ${!isSwitched ? style.active : null}`}
-        onClick={() => {
-          onChange();
-        }}
-      >
-        {options[1]}
-      </div>
+      <label className={`${style.option} ${isSwitched ? style.active : null}`}>
+        <input onClick={onChange} />
+        <span> {options[0]}</span>
+      </label>
+      <label className={`${style.option} ${!isSwitched ? style.active : null}`}>
+        <input onClick={onChange} />
+        <span>{options[1]}</span>
+      </label>
     </div>
   );
 };

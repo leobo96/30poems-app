@@ -30,12 +30,12 @@ const Filter = ({ data, activeFilters, onChange }: FilterProps) => {
 
   return (
     <div>
-      <span
+      <button
         className="btn btn-link text-primary ps-0"
         onClick={() => setIsOpen(!isOpen)}
       >
         Filtri<i className="ms-1 bi-caret-right"></i>
-      </span>
+      </button>
       <Collapse isOpen={isOpen}>{pills}</Collapse>
     </div>
   );
@@ -59,7 +59,7 @@ function Catalogo() {
     return activeFilters.length !== 0
       ? data.filter((poem) => activeFilters.includes(poem.author))
       : data;
-  }, [activeFilters]);
+  }, [activeFilters, data]);
 
   return (
     <Container>
