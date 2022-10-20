@@ -31,29 +31,20 @@ const Switch = ({ displayGrid, setDisplayGrid }: SwitchProps) => {
 };
 interface InteractivePillProps {
   author: string;
-  activeFilters: string[];
-  setActiveFilters: (a: string[]) => void;
+  isActive: boolean;
+  onClick: () => void;
 }
 const InteractivePill = ({
   author,
-  activeFilters,
-  setActiveFilters,
+  isActive,
+  onClick,
 }: InteractivePillProps) => {
-  const [isActive, setIsActive] = useState(false);
-
   return (
     <Badge
       pill
       className={`me-1 mb-1 ${isActive ? "bg-primary" : ""}`}
       style={{ cursor: "pointer" }}
-      onClick={() => {
-        setActiveFilters(
-          activeFilters.includes(author)
-            ? activeFilters.filter((filter) => filter !== author)
-            : [...activeFilters, author]
-        );
-        setIsActive(!isActive);
-      }}
+      onClick={onClick}
     >
       {author}
     </Badge>
@@ -63,9 +54,9 @@ const InteractivePill = ({
 interface FilterProps {
   data: Poem[];
   activeFilters: string[];
-  setActiveFilters: (a: string[]) => void;
+  onChange: (a: string) => void;
 }
-const Filter = ({ data, activeFilters, setActiveFilters }: FilterProps) => {
+const Filter = ({ data, activeFilters, onChange }: FilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const authors = Array.from(new Set(data.map((poem) => poem.author))).sort();
@@ -75,8 +66,8 @@ const Filter = ({ data, activeFilters, setActiveFilters }: FilterProps) => {
       <InteractivePill
         key={index}
         author={author}
-        activeFilters={activeFilters}
-        setActiveFilters={setActiveFilters}
+        isActive={activeFilters.includes(author)}
+        onClick={() => onChange(author)}
       />
     );
   });
@@ -102,6 +93,14 @@ function Catalogo() {
 
   const [dataToShow, setDataToShow] = useState<Poem[]>([]);
 
+  const filterChangeHandler = (author: string) => {
+    setActiveFilters((prevFilter) =>
+      prevFilter.includes(author)
+        ? prevFilter.filter((filter) => filter !== author)
+        : [...prevFilter, author]
+    );
+  };
+
   useEffect(() => {
     setDataToShow(
       activeFilters.length !== 0
@@ -123,7 +122,7 @@ function Catalogo() {
           <Filter
             data={data}
             activeFilters={activeFilters}
-            setActiveFilters={setActiveFilters}
+            onChange={filterChangeHandler}
           />
         </Col>
       </Row>
