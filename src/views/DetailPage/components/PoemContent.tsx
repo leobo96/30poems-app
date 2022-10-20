@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ShowAllButton } from "../../../../components/ShowAllButton/ShowAllButton";
-import { Poem } from "../../../../models";
+import { ShowAllButton } from "../../../components/ShowAllButton/ShowAllButton";
+import { Poem } from "../../../models";
 
 export interface PoemContentProps {
   poem: Poem;
