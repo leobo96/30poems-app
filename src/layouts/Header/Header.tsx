@@ -1,11 +1,11 @@
-import React from "react";
-import { Navbar, NavbarToggler, Collapse, Nav, NavItem } from "reactstrap";
+import { useState } from "react";
 import { NavLink as RouterLink } from "react-router-dom";
+import { Collapse, Nav, Navbar, NavbarToggler, NavItem } from "reactstrap";
+import logo from "../../assets/images/logo.png";
+import { navItems } from "../../utility/navItems";
 
-function Header(props) {
-  const { navItems, logo } = props;
-  // Collapse isOpen State
-  const [isOpen, setIsOpen] = React.useState(false);
+function Header() {
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);

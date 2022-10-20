@@ -1,9 +1,7 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
-
-function Footer(props) {
-  const { navItems, logo } = props;
-
+import logo from "../../assets/images/logo.png";
+import { navItems } from "../../utility/navItems";
+function Footer() {
   const itemList = navItems.map((item) => {
     return (
       <li key={item.url} className="nav-item">
@@ -42,14 +40,23 @@ function Footer(props) {
               href="https://github.com/leobo96"
               target={"_blank"}
               rel="noreferrer"
-            ><i className="bi-github text-primary p-3" style={{fontSize: "1rem"}}></i></a>
-            
+            >
+              <i
+                className="bi-github text-primary p-3"
+                style={{ fontSize: "1rem" }}
+              ></i>
+            </a>
+
             <a
               href="https://www.linkedin.com/in/leonardobonaventura/"
               target={"_blank"}
               rel="noreferrer"
-            ><i className="bi-linkedin text-primary p-3" style={{fontSize: "1rem"}}></i></a>
-            
+            >
+              <i
+                className="bi-linkedin text-primary p-3"
+                style={{ fontSize: "1rem" }}
+              ></i>
+            </a>
           </div>
         </div>
       </div>
