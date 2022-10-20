@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Spinner } from "reactstrap";
+import { Col, Row, Spinner } from "reactstrap";
 import AuthorCard from "../../components/AuthorCard/AuthorCard";
 import { useStore } from "../../context/store";
 import { Poem } from "../../models";
@@ -38,19 +38,22 @@ const PoemContent = ({
   const firstFiveLines = lines.filter((_, index) => index < 5);
 
   return (
-    <div className="row justify-content-between align-items-center">
-      <div className="col-sm text-start">
-        <h1 className="mb-3">{poem.title}</h1>
-        {collapsed ? firstFiveLines : lines}
+    <Row className="justify-content-between align-items-center">
+      <Col sm className="text-start">
+        <div className="overflow-scroll" style={{ maxHeight: "500px" }}>
+          <h1 className="mb-3">{poem.title}</h1>
+          {collapsed ? firstFiveLines : lines}
+        </div>
         {lines.length > 5 ? (
           <ShowAllButton collapsed={collapsed} setCollapsed={setCollapsed} />
         ) : (
           ""
         )}
         {collapsed ? `(${poem.linecount} versi)` : ""}
-      </div>
-      <div
-        className={`col-sm mt-3 d-flex justify-content-center justify-content-sm-end
+      </Col>
+      <Col
+        sm
+        className={`mt-3 d-flex justify-content-center justify-content-sm-end
         ${!collapsed ? "align-self-sm-start" : ""}`}
       >
         <AuthorCard
@@ -59,8 +62,8 @@ const PoemContent = ({
           name={poem.author}
           authorWikiPageId={poem.wikiPageId}
         />
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 
