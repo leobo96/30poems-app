@@ -14,7 +14,14 @@ interface ResponseData {
   title: string;
 }
 
-export const getImageAndPageIdApi = async (author: string) => {
+interface ImageAndPageId {
+  pageId: number;
+  imageUrl?: string;
+}
+
+export const getImageAndPageIdApi = async (
+  author: string
+): Promise<ImageAndPageId> => {
   const authorNameAdjusted = prepareNameForWikipediaQuery(author);
 
   const url1 = IMAGE_FROM_WIKIPEDIA_URL + authorNameAdjusted;

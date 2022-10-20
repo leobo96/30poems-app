@@ -27,14 +27,9 @@ interface PoemContentProps {
   poem: Poem;
   collapsed: boolean;
   setCollapsed: (a: boolean) => void;
-  id: number;
 }
-const PoemContent = ({
-  poem,
-  collapsed,
-  setCollapsed,
-  id,
-}: PoemContentProps) => {
+
+const PoemContent = ({ poem, collapsed, setCollapsed }: PoemContentProps) => {
   const lines = poem.lines.map((line, index) => <p key={index}>{line}</p>);
   const firstFiveLines = lines.filter((_, index) => index < 5);
 
@@ -57,12 +52,7 @@ const PoemContent = ({
         className={`mt-3 d-flex justify-content-center justify-content-sm-end
         ${!collapsed ? "align-self-sm-start" : ""}`}
       >
-        <AuthorCard
-          id={id}
-          image={poem.imageUrl}
-          name={poem.author}
-          authorWikiPageId={poem.wikiPageId}
-        />
+        <AuthorCard author={poem.author} />
       </Col>
     </Row>
   );
@@ -91,7 +81,6 @@ function DetailPage() {
   return (
     <Container className="p-3">
       <PoemContent
-        id={id}
         poem={data[id]}
         collapsed={collapsed}
         setCollapsed={setCollapsed}

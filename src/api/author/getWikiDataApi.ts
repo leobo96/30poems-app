@@ -8,32 +8,24 @@ const API_URL_FOR_WIKIDATA_ID =
   "https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=pageprops&format=json&titles=";
 
 export interface AuthorWikiData {
-  authorDescription: string;
-  wikidataId: string;
+  authorDescription?: string;
+  wikidataId?: string;
 }
 
 export const getWikiDataApi = async (
   author: string
-): Promise<AuthorWikiData | null> => {
+): Promise<AuthorWikiData | undefined> => {
   const authorNameAdjusted = prepareNameForWikipediaQuery(author);
 
-  const responseData = await fetch(API_URL_FOR_WIKIDATA_ID + authorNameAdjusted)
+  return fetch(API_URL_FOR_WIKIDATA_ID + authorNameAdjusted)
     .then((r) => r.json())
     .then((data) => {
       const entity = data.query.pages[getWikiPageId(data)].pageprops;
       if (entity?.disambiguation !== "") {
         return {
-          authorDescription: entity["wikibase-shortdesc"],
-          wikidataId: entity["wikibase_item"],
+          authorDescription: entity?.["wikibase-shortdesc"],
+          wikidataId: entity?.["wikibase_item"],
         };
       }
     });
-
-  if (!responseData) {
-    return null;
-  }
-
-  return {
-    ...responseData,
-  };
 };
