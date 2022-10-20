@@ -29,16 +29,16 @@ const Switch = ({ displayGrid, setDisplayGrid }: SwitchProps) => {
     </div>
   );
 };
-interface FilterPillProps {
+interface InteractivePillProps {
   author: string;
   activeFilters: string[];
   setActiveFilters: (a: string[]) => void;
 }
-const FilterPill = ({
+const InteractivePill = ({
   author,
   activeFilters,
   setActiveFilters,
-}: FilterPillProps) => {
+}: InteractivePillProps) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -72,7 +72,7 @@ const Filter = ({ data, activeFilters, setActiveFilters }: FilterProps) => {
 
   const pills = authors.map((author, index) => {
     return (
-      <FilterPill
+      <InteractivePill
         key={index}
         author={author}
         activeFilters={activeFilters}
