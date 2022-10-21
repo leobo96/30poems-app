@@ -1,7 +1,4 @@
-import {
-  getWikiPageId,
-  prepareNameForWikipediaQuery,
-} from "../../utility/utility";
+import { prepareNameForWikipediaQuery } from "../../utility/utility";
 
 // This API gives the wikidata id and a short description for an author given the name of the author
 const API_URL_FOR_WIKIDATA_ID =
@@ -20,7 +17,8 @@ export const getWikiDataApi = async (
   return fetch(API_URL_FOR_WIKIDATA_ID + authorNameAdjusted)
     .then((r) => r.json())
     .then((data) => {
-      const entity = data.query.pages[getWikiPageId(data)].pageprops;
+      const entity =
+        data.query.pages[Object.keys(data.query.pages)[0]].pageprops;
       if (entity?.disambiguation !== "") {
         return {
           authorDescription: entity?.["wikibase-shortdesc"],
