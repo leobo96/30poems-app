@@ -4,7 +4,7 @@ import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../features/PoemsTable/PoemsTable";
 import { useStore } from "../../context/store";
 import PoemCard from "../../features/PoemCard/PoemCard";
-import { Switch } from "./../../components/Switch/Switch";
+import { Switch } from "../../components/Switch/Switch";
 import { FilterPoemsByAuthor } from "../../features/FilterPoemsByAuthor/FilterPoemsByAuthor";
 
 function Catalogo() {
