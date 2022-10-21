@@ -5,26 +5,33 @@ import DetailPage from "./DetailPage/DetailPage";
 import Documentazione from "./Documentazione/Documentazione";
 import Home from "./Home/Home";
 
+export enum ROUTES {
+  HOME = "",
+  POEMS = "poems",
+  DOCUMENTAZIONE = "documentazione",
+  POEM_DETAIL = "poems/:number",
+}
+
 export const router = createBrowserRouter(
   [
     {
-      path: "/",
+      path: "",
       element: <Layout />,
       children: [
         {
-          path: "",
+          path: ROUTES.HOME,
           element: <Home />,
         },
         {
-          path: "poems",
+          path: ROUTES.POEMS,
           element: <Catalogo />,
         },
         {
-          path: "documentazione",
+          path: ROUTES.DOCUMENTAZIONE,
           element: <Documentazione />,
         },
         {
-          path: "poems/:number",
+          path: ROUTES.POEM_DETAIL,
           element: <DetailPage />,
         },
       ],
