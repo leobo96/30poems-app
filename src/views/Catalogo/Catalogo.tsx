@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
-import { Col, Collapse, Container, Row } from "reactstrap";
+import { Col, Collapse, Container, NavLink, Row } from "reactstrap";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../components/PoemsTable/PoemsTable";
 import { useStore } from "../../context/store";
+import PoemCard from "../../features/PoemCard/PoemCard";
 import { Poem } from "../../models";
 import { InteractivePill } from "./../../components/InteractivePill/InteractivePill";
 import { Switch } from "./../../components/Switch/Switch";
@@ -87,8 +88,11 @@ function Catalogo() {
         <Col>
           {displayGrid ? (
             <CardsGrid
-              data={dataToShow}
-              col={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
+              card={dataToShow.map((poem) => (
+                <NavLink to={`/poems/${poem.id}`} key={poem.id}>
+                  <PoemCard poem={poem} />
+                </NavLink>
+              ))}
             />
           ) : (
             <PoemsTable data={dataToShow} />
