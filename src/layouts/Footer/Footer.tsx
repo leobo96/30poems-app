@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-import { navItems } from "../../utility/navItems";
+import { ROUTES } from "../../routes/router";
+import { navigation } from "../navigation";
+
 function Footer() {
-  const itemList = navItems.map((item) => {
+  const navItems = navigation.map((item) => {
     return (
       <li key={item.url} className="nav-item">
         <NavLink
@@ -21,12 +23,12 @@ function Footer() {
   return (
     <footer className="py-4 bg-dark text-light">
       <div className="container-fluid d-flex flex-column align-items-center">
-        <NavLink to="/">
+        <NavLink to={ROUTES.HOME}>
           <img src={logo} className="mb-3" alt="logo" loading="lazy" />
         </NavLink>
         <nav>
           <ul className="nav d-flex flex-column flex-sm-row text-center">
-            {itemList}
+            {navItems}
           </ul>
         </nav>
         <hr className="w-75" />

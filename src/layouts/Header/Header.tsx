@@ -2,7 +2,8 @@ import { useState } from "react";
 import { NavLink as RouterLink } from "react-router-dom";
 import { Collapse, Nav, Navbar, NavbarToggler, NavItem } from "reactstrap";
 import logo from "../../assets/images/logo.png";
-import { navItems } from "../../utility/navItems";
+import { ROUTES } from "../../routes/router";
+import { navigation } from "../navigation";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,14 +12,15 @@ function Header() {
     setIsOpen(!isOpen);
   };
 
-  const itemList = navItems.map((item, index) => {
+  const navItems = navigation.map((item) => {
     return (
-      <NavItem key={index} className="text-uppercase fw-bold">
+      <NavItem key={item.text} className="text-uppercase fw-bold">
         <RouterLink
           to={item.url}
           className={({ isActive }) =>
             `ps-3 text-light nav-link${isActive ? " active" : ""}`
           }
+          end
         >
           {item.text}
         </RouterLink>
@@ -28,7 +30,7 @@ function Header() {
 
   return (
     <Navbar expand="md" dark color="dark" tag="header" fixed="top">
-      <RouterLink to="/" className="mx-3">
+      <RouterLink to={ROUTES.HOME} className="mx-3">
         <img src={logo} alt="logo" className="logo" loading="lazy" />
       </RouterLink>
 
@@ -37,7 +39,7 @@ function Header() {
       <Collapse navbar isOpen={isOpen}>
         <nav>
           <Nav className="me-auto" navbar tag="ul">
-            {itemList}
+            {navItems}
           </Nav>
         </nav>
       </Collapse>
