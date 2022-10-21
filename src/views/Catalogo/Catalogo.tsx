@@ -1,46 +1,11 @@
 import { useMemo, useState } from "react";
-import { Col, Collapse, Container, NavLink, Row } from "reactstrap";
+import { Col, Container, NavLink, Row } from "reactstrap";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../features/PoemsTable/PoemsTable";
 import { useStore } from "../../context/store";
 import PoemCard from "../../features/PoemCard/PoemCard";
-import { Poem } from "../../models";
-import { InteractivePill } from "./../../components/InteractivePill/InteractivePill";
 import { Switch } from "./../../components/Switch/Switch";
-
-interface FilterProps {
-  data: Poem[];
-  activeFilters: string[];
-  onChange: (a: string) => void;
-}
-const Filter = ({ data, activeFilters, onChange }: FilterProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const authors = Array.from(new Set(data.map((poem) => poem.author))).sort();
-
-  const pills = authors.map((author) => {
-    return (
-      <InteractivePill
-        key={author.name}
-        text={author.name}
-        isActive={activeFilters.includes(author.name)}
-        onClick={() => onChange(author.name)}
-      />
-    );
-  });
-
-  return (
-    <div>
-      <button
-        className="btn btn-link text-primary ps-0"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        Filtri<i className="ms-1 bi-caret-right"></i>
-      </button>
-      <Collapse isOpen={isOpen}>{pills}</Collapse>
-    </div>
-  );
-};
+import { FilterPoemsByAuthor } from "../../features/FilterPoemsByAuthor/FilterPoemsByAuthor";
 
 function Catalogo() {
   const { poetryData: data } = useStore();
@@ -76,7 +41,7 @@ function Catalogo() {
 
       <Row className="mb-5">
         <Col>
-          <Filter
+          <FilterPoemsByAuthor
             data={data}
             activeFilters={activeFilters}
             onChange={filterChangeHandler}
