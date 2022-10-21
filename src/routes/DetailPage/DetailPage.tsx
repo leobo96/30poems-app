@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
-import AuthorCard from "../../features/AuthorCard/AuthorCard";
 import { LoadingScreen } from "../../components/LoadingScreen/LoadingScreen";
 import { useStore } from "../../context/store";
+import AuthorCard from "../../features/AuthorCard/AuthorCard";
 import { PoemContent } from "../../features/PoemContent/PoemContent";
 
 function DetailPage() {
@@ -11,7 +11,7 @@ function DetailPage() {
   const { number } = useParams();
   const id = number && parseInt(number);
 
-  if (!id) {
+  if (typeof id !== "number") {
     return <p>Error</p>;
   }
 
