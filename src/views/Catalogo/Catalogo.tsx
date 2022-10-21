@@ -88,7 +88,7 @@ function Catalogo() {
         <Col>
           {displayGrid ? (
             <CardsGrid
-              card={dataToShow.map((poem) => (
+              cards={dataToShow.map((poem) => (
                 <NavLink to={`/poems/${poem.id}`} key={poem.id}>
                   <PoemCard poem={poem} />
                 </NavLink>
