@@ -1,16 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
+import { ROUTES } from "../costants/routes";
 import Layout from "../layouts/Layout";
 import Catalogo from "./Catalogo/Catalogo";
 import DetailPage from "./DetailPage/DetailPage";
 import Documentazione from "./Documentazione/Documentazione";
 import Home from "./Home/Home";
-
-export enum ROUTES {
-  HOME = "",
-  POEMS = "poems",
-  DOCUMENTAZIONE = "documentazione",
-  POEM_DETAIL = "poems/:number",
-}
 
 export const router = createBrowserRouter(
   [

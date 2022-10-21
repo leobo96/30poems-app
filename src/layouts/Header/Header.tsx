@@ -2,8 +2,8 @@ import { useState } from "react";
 import { NavLink as RouterLink } from "react-router-dom";
 import { Collapse, Nav, Navbar, NavbarToggler, NavItem } from "reactstrap";
 import logo from "../../assets/images/logo.png";
-import { ROUTES } from "../../routes/router";
-import { navigation } from "../navigation";
+import { ROUTES } from "../../costants/routes";
+import { navigation } from "../Layout";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
