@@ -3,7 +3,7 @@ import { Col, Container, Row } from "reactstrap";
 import AuthorCard from "../../features/AuthorCard/AuthorCard";
 import { LoadingScreen } from "../../components/LoadingScreen/LoadingScreen";
 import { useStore } from "../../context/store";
-import { PoemContent } from "./components/PoemContent";
+import { PoemContent } from "../../features/PoemContent/PoemContent";
 
 function DetailPage() {
   const { poetryData: data } = useStore();
