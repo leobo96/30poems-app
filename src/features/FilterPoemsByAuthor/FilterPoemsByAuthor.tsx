@@ -14,14 +14,17 @@ export const FilterPoemsByAuthor = ({
   onChange,
 }: FilterPoemsByAuthorProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const authors = Array.from(new Set(data.map((poem) => poem.author))).sort();
+  const authors = Array.from(
+    new Set(data.map((poem) => poem.author.name))
+  ).sort();
+
   const pills = authors.map((author) => {
     return (
       <InteractivePill
-        key={author.name}
-        text={author.name}
-        isActive={activeFilters.includes(author.name)}
-        onClick={() => onChange(author.name)}
+        key={author}
+        text={author}
+        isActive={activeFilters.includes(author)}
+        onClick={() => onChange(author)}
       />
     );
   });
