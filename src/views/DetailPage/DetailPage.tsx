@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
-import AuthorCard from "../../components/AuthorCard/AuthorCard";
+import AuthorCard from "../../features/AuthorCard/AuthorCard";
 import { LoadingScreen } from "../../components/LoadingScreen/LoadingScreen";
 import { useStore } from "../../context/store";
 import { PoemContent } from "./components/PoemContent";
