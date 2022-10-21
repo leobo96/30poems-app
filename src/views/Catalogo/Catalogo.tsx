@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Col, Collapse, Container, NavLink, Row } from "reactstrap";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
-import PoemsTable from "../../components/PoemsTable/PoemsTable";
+import PoemsTable from "../../features/PoemsTable/PoemsTable";
 import { useStore } from "../../context/store";
 import PoemCard from "../../features/PoemCard/PoemCard";
 import { Poem } from "../../models";
