@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Col, Container, NavLink, Row } from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
 import PoemsTable from "../../features/PoemsTable/PoemsTable";
 import { useStore } from "../../context/store";
@@ -54,9 +54,7 @@ function Catalogo() {
           {displayGrid ? (
             <CardsGrid
               cards={dataToShow.map((poem) => (
-                <NavLink to={`/poems/${poem.id}`} key={poem.id}>
-                  <PoemCard poem={poem} />
-                </NavLink>
+                <PoemCard poem={poem} key={poem.id} />
               ))}
             />
           ) : (
