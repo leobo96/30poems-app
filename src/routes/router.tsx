@@ -2,8 +2,8 @@ import { lazy } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import { ROUTES } from "../costants/routes";
 import Layout from "../layouts/Layout";
+import { queryClient } from "../queries";
 import { getPoems } from "../queries/usePoems";
-import { queryClient } from "../utility/queryClient";
 
 const Catalogo = lazy(() => import("./Catalogo/Catalogo"));
 const Home = lazy(() => import("./Home/Home"));

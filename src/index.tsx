@@ -5,8 +5,8 @@ import ReactDOM from "react-dom";
 import { RouterProvider } from "react-router-dom";
 import { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
 import "./index.css";
+import { queryClient } from "./queries";
 import { router } from "./routes/router";
-import { queryClient } from "./utility/queryClient";
 
 ReactDOM.render(
   <React.StrictMode>
