@@ -1,7 +1,9 @@
 import { lazy } from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import { ROUTES } from "../costants/routes";
 import Layout from "../layouts/Layout";
+import { getPoems } from "../queries/usePoems";
+import { queryClient } from "../utility/queryClient";
 
 const Catalogo = lazy(() => import("./Catalogo/Catalogo"));
 const Home = lazy(() => import("./Home/Home"));
@@ -11,7 +13,6 @@ const DetailPage = lazy(() => import("./DetailPage/DetailPage"));
 export const router = createBrowserRouter(
   [
     {
-      path: "",
       element: <Layout />,
       children: [
         {
@@ -19,19 +20,28 @@ export const router = createBrowserRouter(
           element: <Home />,
         },
         {
-          path: ROUTES.POEMS,
-          element: <Catalogo />,
-        },
-        {
           path: ROUTES.DOCUMENTAZIONE,
           element: <Documentazione />,
         },
         {
-          path: ROUTES.POEM_DETAIL,
-          element: <DetailPage />,
+          path: ROUTES.POEMS,
+          loader: () => queryClient.fetchQuery(["poems"], getPoems),
+          element: <Outlet />,
+          children: [
+            {
+              path: "",
+              element: <Catalogo />,
+            },
+            {
+              path: ROUTES.POEM_DETAIL,
+              element: <DetailPage />,
+              errorElement: <p>Error...</p>,
+            },
+          ],
         },
       ],
     },
   ],
+
   { basename: "/30poems-app" }
 );

@@ -14,9 +14,7 @@ export const FilterPoemsByAuthor = ({
   onChange,
 }: FilterPoemsByAuthorProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const authors = Array.from(
-    new Set(data.map((poem) => poem.author.name))
-  ).sort();
+  const authors = Array.from(new Set(data.map((poem) => poem.author))).sort();
 
   const pills = authors.map((author) => {
     return (

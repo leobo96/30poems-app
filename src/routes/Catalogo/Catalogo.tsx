@@ -1,15 +1,14 @@
 import { useMemo, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import CardsGrid from "../../components/CardsGrid/CardsGrid";
-import PoemsTable from "../../features/PoemsTable/PoemsTable";
-import { useStore } from "../../context/store";
-import PoemCard from "../../features/PoemCard/PoemCard";
 import { Switch } from "../../components/Switch/Switch";
 import { FilterPoemsByAuthor } from "../../features/FilterPoemsByAuthor/FilterPoemsByAuthor";
+import PoemCard from "../../features/PoemCard/PoemCard";
+import PoemsTable from "../../features/PoemsTable/PoemsTable";
+import { usePoems } from "../../queries/usePoems";
 
 function Catalogo() {
-  const { poetryData: data } = useStore();
-
+  const { data } = usePoems();
   const [displayGrid, setDisplayGrid] = useState(true);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
@@ -22,8 +21,8 @@ function Catalogo() {
   };
 
   const dataToShow = useMemo(() => {
-    return activeFilters.length !== 0
-      ? data.filter((poem) => activeFilters.includes(poem.author.name))
+    return data && activeFilters.length !== 0
+      ? data.filter((poem) => activeFilters.includes(poem.author))
       : data;
   }, [activeFilters, data]);
 
@@ -39,29 +38,33 @@ function Catalogo() {
         </Col>
       </Row>
 
-      <Row className="mb-5">
-        <Col>
-          <FilterPoemsByAuthor
-            data={data}
-            activeFilters={activeFilters}
-            onChange={filterChangeHandler}
-          />
-        </Col>
-      </Row>
+      {data && dataToShow && (
+        <>
+          <Row className="mb-5">
+            <Col>
+              <FilterPoemsByAuthor
+                data={data}
+                activeFilters={activeFilters}
+                onChange={filterChangeHandler}
+              />
+            </Col>
+          </Row>
 
-      <Row className="justify-content-center">
-        <Col>
-          {displayGrid ? (
-            <CardsGrid
-              cards={dataToShow.map((poem) => (
-                <PoemCard poem={poem} key={poem.id} />
-              ))}
-            />
-          ) : (
-            <PoemsTable data={dataToShow} />
-          )}
-        </Col>
-      </Row>
+          <Row className="justify-content-center">
+            <Col>
+              {displayGrid ? (
+                <CardsGrid
+                  cards={dataToShow?.map((poem) => (
+                    <PoemCard poem={poem} key={poem.id} />
+                  ))}
+                />
+              ) : (
+                <PoemsTable data={dataToShow} />
+              )}
+            </Col>
+          </Row>
+        </>
+      )}
     </Container>
   );
 }

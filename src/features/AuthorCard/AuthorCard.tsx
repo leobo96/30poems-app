@@ -1,28 +1,15 @@
-import { useEffect, useState } from "react";
 import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from "reactstrap";
-import {
-  AuthorWikiData,
-  getAuthorDataApi,
-} from "../../api/author/getAuthorData";
 import defaultAuthorImage from "../../assets/images/missing.jpg";
-import { Author } from "../../models";
+import { useAuthor } from "../../queries/useAuthor";
 import { buildImageUrlFromFileName } from "../../utility/buildImageUrlFromFileName";
 import style from "./AuthorCard.module.css";
 
 interface AuthorCardProps {
-  author: Author;
+  author: string;
 }
 
 const AuthorCard = ({ author }: AuthorCardProps) => {
-  const [authorWikidata, setAuthorWikidata] = useState<
-    AuthorWikiData | undefined
-  >();
-
-  useEffect(() => {
-    getAuthorDataApi(author.name).then((data) => {
-      setAuthorWikidata(data);
-    });
-  }, [author.name]);
+  const { data: authorWikidata } = useAuthor(author);
 
   return (
     <Card className={`h-100 ${style.card}`}>
@@ -34,10 +21,10 @@ const AuthorCard = ({ author }: AuthorCardProps) => {
             ? buildImageUrlFromFileName(authorWikidata.imageName)
             : defaultAuthorImage
         }
-        alt={author.name}
+        alt={author}
       />
       <CardBody>
-        <CardTitle tag="h3">{author.name}</CardTitle>
+        <CardTitle tag="h3">{author}</CardTitle>
         {authorWikidata?.authorDescription && (
           <CardSubtitle className={style.overflow}>
             {authorWikidata.authorDescription}

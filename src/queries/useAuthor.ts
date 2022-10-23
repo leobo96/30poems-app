@@ -1,4 +1,5 @@
-import { prepareNameForWikipediaQuery } from "../../utility/utility";
+import { useQuery } from "@tanstack/react-query";
+import { prepareNameForWikipediaQuery } from "../utility/utility";
 
 // This API gives the wikidata id and a short description for an author given the name of the author
 const API_URL_FOR_WIKIDATA_ID =
@@ -11,7 +12,11 @@ export interface AuthorWikiData {
   wikidataId?: string;
 }
 
-export const getAuthorDataApi = async (
+export const useAuthor = (name: string) => {
+  return useQuery(["author", name], () => getAuthorDataApi(name));
+};
+
+const getAuthorDataApi = async (
   author: string
 ): Promise<AuthorWikiData | undefined> => {
   const authorNameAdjusted = prepareNameForWikipediaQuery(author);

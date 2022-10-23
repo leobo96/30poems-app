@@ -6,8 +6,8 @@ export interface Author {
 
 export interface Poem {
   title: string;
-  author: Author;
+  author: string;
   lines: string[];
   linecount: number;
-  id?: string;
+  id?: number;
 }
