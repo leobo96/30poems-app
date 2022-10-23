@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
+import { LoadingScreen } from "../components/LoadingScreen/LoadingScreen";
 import { ROUTES } from "../costants/routes";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
@@ -15,11 +16,13 @@ export const navigation: NavItem[] = [
 ];
 
 function Layout() {
+  const navigation = useNavigation();
+
   return (
     <>
       <Header />
       <main>
-        <Outlet />
+        {navigation.state === "loading" ? <LoadingScreen /> : <Outlet />}
       </main>
       <Footer />
     </>
