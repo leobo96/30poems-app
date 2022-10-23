@@ -1,7 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { RouterProvider } from "react-router-dom";
+import { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
 import { StoreProvider } from "./context/store";
 import "./index.css";
 import { router } from "./routes/router";
@@ -9,7 +10,9 @@ import { router } from "./routes/router";
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>
-      <RouterProvider router={router} />
+      <Suspense fallback={<LoadingScreen />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </StoreProvider>
   </React.StrictMode>,
   document.getElementById("root")
