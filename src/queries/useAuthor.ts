@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { prepareNameForWikipediaQuery } from "../utility/utility";
+import { prepareNameForWikipediaQuery } from "../utility/prepareNameForWikipediaQuery";
 
 // This API gives the wikidata id and a short description for an author given the name of the author
 const API_URL_FOR_WIKIDATA_ID =
