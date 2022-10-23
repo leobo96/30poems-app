@@ -5,11 +5,13 @@ const API_URL_FOR_WIKIDATA_ID =
   "https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=pageprops&format=json&titles=";
 
 export interface AuthorWikiData {
+  wikipediaPageId: string;
+  imageName: string;
   authorDescription?: string;
   wikidataId?: string;
 }
 
-export const getWikiDataApi = async (
+export const getAuthorDataApi = async (
   author: string
 ): Promise<AuthorWikiData | undefined> => {
   const authorNameAdjusted = prepareNameForWikipediaQuery(author);
@@ -17,10 +19,12 @@ export const getWikiDataApi = async (
   return fetch(API_URL_FOR_WIKIDATA_ID + authorNameAdjusted)
     .then((r) => r.json())
     .then((data) => {
-      const entity =
-        data.query.pages[Object.keys(data.query.pages)[0]].pageprops;
+      const wikipediaPageId = Object.keys(data.query.pages)[0];
+      const entity = data.query.pages[wikipediaPageId].pageprops;
       if (entity?.disambiguation !== "") {
         return {
+          wikipediaPageId,
+          imageName: entity?.["page_image_free"],
           authorDescription: entity?.["wikibase-shortdesc"],
           wikidataId: entity?.["wikibase_item"],
         };

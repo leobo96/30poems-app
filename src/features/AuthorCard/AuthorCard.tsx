@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from "reactstrap";
 import {
   AuthorWikiData,
-  getWikiDataApi,
-} from "../../api/author/getWikiDataApi";
+  getAuthorDataApi,
+} from "../../api/author/getAuthorData";
+import defaultAuthorImage from "../../assets/images/missing.jpg";
 import { Author } from "../../models";
+import { buildImageUrlFromFileName } from "../../utility/buildImageUrlFromFileName";
 import style from "./AuthorCard.module.css";
 
 interface AuthorCardProps {
@@ -17,7 +19,7 @@ const AuthorCard = ({ author }: AuthorCardProps) => {
   >();
 
   useEffect(() => {
-    getWikiDataApi(author.name).then((data) => {
+    getAuthorDataApi(author.name).then((data) => {
       setAuthorWikidata(data);
     });
   }, [author.name]);
@@ -27,7 +29,11 @@ const AuthorCard = ({ author }: AuthorCardProps) => {
       <CardImg
         className={style.image}
         top
-        src={author.imageUrl}
+        src={
+          authorWikidata?.imageName
+            ? buildImageUrlFromFileName(authorWikidata.imageName)
+            : defaultAuthorImage
+        }
         alt={author.name}
       />
       <CardBody>
@@ -37,9 +43,9 @@ const AuthorCard = ({ author }: AuthorCardProps) => {
             {authorWikidata.authorDescription}
           </CardSubtitle>
         )}
-        {author.wikipediaPageId && (
+        {authorWikidata?.wikipediaPageId && (
           <a
-            href={`https://en.wikipedia.org/w/index.php?curid=${author.wikipediaPageId}`}
+            href={`https://en.wikipedia.org/w/index.php?curid=${authorWikidata.wikipediaPageId}`}
             target="_blank"
             rel="noreferrer"
             className="d-block"
