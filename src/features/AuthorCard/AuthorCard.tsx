@@ -22,6 +22,7 @@ const AuthorCard = ({ author }: AuthorCardProps) => {
             : defaultAuthorImage
         }
         alt={author}
+        loading="lazy"
       />
       <CardBody>
         <CardTitle tag="h3">{author}</CardTitle>

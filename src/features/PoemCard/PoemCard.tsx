@@ -24,6 +24,7 @@ function PoemCard({ poem }: PoemCardProps) {
             : defaultAuthorImage
         }
         alt={poem.author}
+        loading="lazy"
       />
       <CardBody className="d-flex flex-column justify-content-end text-centered">
         <CardTitle className={`${style.overflow} small-caps fs-6 text-primary`}>

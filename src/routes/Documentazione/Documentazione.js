@@ -1,8 +1,7 @@
-import React from "react";
-import style from "./Documentazione.module.css";
-import { Card, CardBody, CardTitle, CardText, Table } from "reactstrap";
+import { Card, CardBody, CardText, CardTitle, Table } from "reactstrap";
 import folderImage from "../../assets/images/folder-structure.png";
 import imageComponenti from "../../assets/images/image-componenti.png";
+import style from "./Documentazione.module.css";
 
 function Documentazione() {
   return (
@@ -38,7 +37,11 @@ function Documentazione() {
               </ul>
             </div>
             <div className="col-md text-center">
-              <img src={folderImage} alt="screen struttura cartelle" />
+              <img
+                src={folderImage}
+                alt="screen struttura cartelle"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
