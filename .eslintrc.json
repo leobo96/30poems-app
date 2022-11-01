@@ -8,12 +8,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jest/recommended",
-    "plugin:testing-library/react",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
+    "react-app",
+    "react-app/jest",
     "prettier"
   ],
   "overrides": [],
@@ -25,12 +21,6 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/no-unescaped-entities": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off"
-  },
-  "settings": {
-    "react": {
-      "version": "detect" // Detect react version
-    }
+    "react/react-in-jsx-scope": "off"
   }
 }
