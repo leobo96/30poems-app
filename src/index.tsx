@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { RouterProvider } from "react-router-dom";
-import { LoadingScreen } from "src/modules/common/components/LoadingScreen/LoadingScreen";
+import { LoadingScreen } from "src/common/components/LoadingScreen/LoadingScreen";
 import "./index.css";
 import { router } from "./router";
 

@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
-import defaultAuthorImage from "src/modules/common/assets/images/missing.jpg";
-import { Poem } from "src/modules/common/types";
-import { buildImageUrlFromFileName } from "src/modules/common/utility/buildImageUrlFromFileName";
+import defaultAuthorImage from "src/common/assets/images/missing.jpg";
+import { Poem } from "src/common/types";
+import { buildImageUrlFromFileName } from "src/common/utility/buildImageUrlFromFileName";
 import style from "./PoemsTable.module.css";
 
 interface PoemsTableProps {

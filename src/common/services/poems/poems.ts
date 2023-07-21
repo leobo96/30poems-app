@@ -1,4 +1,4 @@
-import { Author, Poem } from "src/modules/common/types/poems";
+import { Author, Poem } from "src/common/types/poems";
 
 export type GetPoemsResponseData = Array<{
   title: string;

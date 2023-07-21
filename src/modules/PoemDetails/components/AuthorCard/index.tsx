@@ -1,7 +1,7 @@
 import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from "reactstrap";
-import defaultAuthorImage from "src/modules/common/assets/images/missing.jpg";
-import { Author } from "src/modules/common/types";
-import { buildImageUrlFromFileName } from "src/modules/common/utility/buildImageUrlFromFileName";
+import defaultAuthorImage from "src/common/assets/images/missing.jpg";
+import { Author } from "src/common/types";
+import { buildImageUrlFromFileName } from "src/common/utility/buildImageUrlFromFileName";
 import style from "./AuthorCard.module.css";
 
 interface AuthorCardProps {

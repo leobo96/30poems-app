@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { NavItemConfig } from "src/modules/common/types";
+import { NavItemConfig } from "src/common/types";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 

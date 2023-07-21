@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ShowAllButton } from "src/modules/common/components/ShowAllButton/ShowAllButton";
-import { Poem } from "src/modules/common/types";
+import { ShowAllButton } from "src/common/components/ShowAllButton/ShowAllButton";
+import { Poem } from "src/common/types";
 
 export interface PoemContentProps {
   poem: Poem;

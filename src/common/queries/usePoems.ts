@@ -1,6 +1,6 @@
 import { useQueries, useQuery } from "@tanstack/react-query";
-import { getAuthorMeta } from "src/modules/common/services/misc/getAuthorMeta";
-import { getPoems } from "src/modules/common/services/poems/poems";
+import { getAuthorMeta } from "src/common/services/misc/getAuthorMeta";
+import { getPoems } from "src/common/services/poems/poems";
 import { Author } from "../types";
 
 export const usePoems = () => {

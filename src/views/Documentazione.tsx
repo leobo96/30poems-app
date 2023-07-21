@@ -1,6 +1,6 @@
 import { Card, CardBody, CardText, CardTitle, Table } from "reactstrap";
-import folderImage from "src/modules/common/assets/images/folder-structure.png";
-import imageComponenti from "src/modules/common/assets/images/image-componenti.png";
+import folderImage from "src/common/assets/images/folder-structure.png";
+import imageComponenti from "src/common/assets/images/image-componenti.png";
 
 function Documentazione() {
   return (

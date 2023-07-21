@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
-import CardsGrid from "src/modules/common/components/CardsGrid/CardsGrid";
-import { Switch } from "src/modules/common/components/Switch/Switch";
-import { Poem } from "src/modules/common/types";
+import CardsGrid from "src/common/components/CardsGrid/CardsGrid";
+import { Switch } from "src/common/components/Switch/Switch";
+import { Poem } from "src/common/types";
 import { FilterPoemsByAuthor } from "./components/FilterPoemsByAuthor";
 import PoemCard from "./components/PoemCard";
 import PoemsTable from "./components/PoemsTable";

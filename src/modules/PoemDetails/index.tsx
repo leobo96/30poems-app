@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
-import { Poem } from "src/modules/common/types";
+import { Poem } from "src/common/types";
 import { links } from "src/router/links";
 import AuthorCard from "./components/AuthorCard";
 import { PoemContent } from "./components/PoemContent";

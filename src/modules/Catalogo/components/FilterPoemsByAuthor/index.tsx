@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Collapse } from "reactstrap";
-import { InteractivePill } from "src/modules/common/components/InteractivePill/InteractivePill";
-import { Poem } from "src/modules/common/types";
+import { InteractivePill } from "src/common/components/InteractivePill/InteractivePill";
+import { Poem } from "src/common/types";
 
 export interface FilterPoemsByAuthorProps {
   data: Poem[];

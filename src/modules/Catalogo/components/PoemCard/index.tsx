@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
-import defaultAuthorImage from "src/modules/common/assets/images/missing.jpg";
-import { Poem } from "src/modules/common/types/poems";
-import { buildImageUrlFromFileName } from "src/modules/common/utility/buildImageUrlFromFileName";
+import defaultAuthorImage from "src/common/assets/images/missing.jpg";
+import { Poem } from "src/common/types/poems";
+import { buildImageUrlFromFileName } from "src/common/utility/buildImageUrlFromFileName";
 import style from "./PoemCard.module.css";
 
 interface PoemCardProps {

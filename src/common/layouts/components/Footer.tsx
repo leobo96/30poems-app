@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "src/modules/commons/assets/images/logo.png";
+import logo from "src/common/assets/images/logo.png";
 import { links } from "src/router/links";
 import { MainLayoutProps } from "../MainLayout";
 
