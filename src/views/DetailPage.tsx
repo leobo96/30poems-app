@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { LoadingScreen } from "src/modules/common/components/LoadingScreen/LoadingScreen";
 import { PoemDetails } from "src/modules/PoemDetails";
 import { usePoems } from "../modules/common/queries/usePoems";
 
@@ -14,7 +15,7 @@ function DetailPage() {
   const poemId = parseInt(id);
 
   if (isLoading) {
-    return <>isLoading...</>;
+    return <LoadingScreen />;
   }
 
   if (isError || !data) {
