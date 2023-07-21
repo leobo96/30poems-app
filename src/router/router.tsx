@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import MainLayout from "src/modules/common/layouts/MainLayout";
+import { Main } from "src/modules/Main";
 
 const Catalogo = lazy(() => import("../views/Catalogo"));
 const Home = lazy(() => import("../views/Home"));
@@ -10,11 +10,7 @@ const DetailPage = lazy(() => import("../views/DetailPage"));
 export const router = createBrowserRouter(
   [
     {
-      element: (
-        <MainLayout>
-          <Outlet />
-        </MainLayout>
-      ),
+      element: <Main />,
       errorElement: <p>Error...</p>,
       children: [
         {
