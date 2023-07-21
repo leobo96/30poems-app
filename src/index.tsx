@@ -1,13 +1,22 @@
-import { QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { RouterProvider } from "react-router-dom";
-import { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
+import { LoadingScreen } from "src/modules/common/components/LoadingScreen/LoadingScreen";
 import "./index.css";
-import { queryClient } from "./queries";
-import { router } from "./routes/router";
+import { router } from "./router";
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      refetchOnMount: true,
+    },
+  },
+});
+
+// eslint-disable-next-line react/no-deprecated
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
