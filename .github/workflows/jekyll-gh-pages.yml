@@ -26,8 +26,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        run: git checkout gh-pages
       - name: build
         run: yarn run build
   # Deployment job
