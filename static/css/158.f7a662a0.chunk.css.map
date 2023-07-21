@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/158.f7a662a0.chunk.css","mappings":"AAAA,wBACE,eACF,CAEA,yBACE,gBAAiB,CACjB,gBACF","sources":["modules/PoemDetails/components/AuthorCard/AuthorCard.module.css"],"sourcesContent":[".card {\n  max-width: 16rem;\n}\n\n.image {\n  max-height: 16rem;\n  object-fit: cover;\n}\n"],"names":[],"sourceRoot":""}
