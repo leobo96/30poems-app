@@ -2,10 +2,10 @@ import { useState } from "react";
 import { NavLink as RouterLink } from "react-router-dom";
 import { Collapse, Nav, Navbar, NavbarToggler, NavItem } from "reactstrap";
 import { links } from "src/router/links";
-import { navigation } from "src/router/mainNavigationConfig";
 import logo from "../../assets/images/logo.png";
+import { MainLayoutProps } from "../MainLayout";
 
-function Header() {
+function Header({ navigation }: Pick<MainLayoutProps, "navigation">) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {

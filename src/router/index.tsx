@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import { Main } from "src/modules/Main";
+import { Main } from "src/router/wrappers/Main";
 
 const Catalogo = lazy(() => import("../views/Catalogo"));
 const Home = lazy(() => import("../views/Home"));

@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { links } from "src/router";
-import { navigation } from "src/router/mainNavigationConfig";
-import logo from "../../assets/images/logo.png";
+import logo from "src/modules/commons/assets/images/logo.png";
+import { links } from "src/router/links";
+import { MainLayoutProps } from "../MainLayout";
 
-function Footer() {
+function Footer({ navigation }: Pick<MainLayoutProps, "navigation">) {
   const navItems = navigation.map((item) => {
     return (
       <li key={item.url} className="nav-item">

@@ -1,13 +1,18 @@
 import { PropsWithChildren } from "react";
+import { NavItemConfig } from "src/modules/common/types";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
-function MainLayout({ children }: PropsWithChildren) {
+export type MainLayoutProps = PropsWithChildren & {
+  navigation: NavItemConfig[];
+};
+
+function MainLayout({ children, navigation }: MainLayoutProps) {
   return (
     <>
-      <Header />
+      <Header navigation={navigation} />
       <main>{children}</main>
-      <Footer />
+      <Footer navigation={navigation} />
     </>
   );
 }
