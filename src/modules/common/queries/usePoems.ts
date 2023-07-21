@@ -10,6 +10,7 @@ export const usePoems = () => {
     queryKey: ["author", poem.author.name],
     queryFn: () => getAuthorMeta(poem.author.prepareNameForWikipediaQuery()),
     enabled: !!poemsData,
+    retries: 0,
   }));
 
   const results = useQueries({
@@ -18,16 +19,18 @@ export const usePoems = () => {
 
   const result =
     poemsData &&
-    results.map((meta, i) => ({
-      ...poemsData[i],
-      author: new Author(poemsData[i].author.name, meta.data),
-    }));
-
-  const isSomeQueryLoading = results.some((meta) => meta.isLoading);
+    results.map((meta, i) =>
+      meta.data
+        ? {
+            ...poemsData[i],
+            author: new Author(poemsData[i].author.name, meta.data),
+          }
+        : poemsData[i]
+    );
 
   return {
     data: result ?? poemsData,
-    isLoading: isLoading || isSomeQueryLoading,
+    isLoading: isLoading,
     isError,
   };
 };

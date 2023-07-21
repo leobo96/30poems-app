@@ -1,6 +1,6 @@
 export interface AuthorWikiData {
   wikipediaPageId: string;
-  imageName: string;
+  imageName?: string;
   authorDescription?: string;
   wikidataId?: string;
 }
