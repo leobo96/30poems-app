@@ -16,7 +16,6 @@ const queryClient = new QueryClient({
   },
 });
 
-// test
 // eslint-disable-next-line react/no-deprecated
 ReactDOM.render(
   <React.StrictMode>
